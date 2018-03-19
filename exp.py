@@ -1,42 +1,38 @@
-matA=[]
-matB=[]
-mutMat=[]
+from functools import reduce
 
-noRowA=int(input("Enter the number of rows in matrix A: "))
-noColA=int(input("Enter the number of cols in matrix A: "))
-noColB=int(input("Enter the number of cols in matrix B: "))
+def celcius(T):
+    return (float(5)/9)*(T-32)
 
-for i in range(noRowA):
-    matA.append([])
+temp=[36,32,55,45,40]
 
-for i in range(noColB):
-    matB.append([])
+ftemp=map(lambda T:(float(9)/5)*T+32,temp)
 
-print("Enter the elements of matrix A row-wise: ")
+print(list(ftemp))
 
-for row in range(noRowA):
-    for col in range(noColA):
-        matA[row].append(int(input()))
+num=[1,2,3,4,5,6,7,8,9,10]
 
-print("Enter the elements of matrix B row-wise: ")
+even_num=filter(lambda x:x%2==0,num)
+print(list(even_num))
 
-for row in range(noColA):
-    for col in range(noColB):
-        matB[row].append(int(input()))
-#
-# for row in range(order):
-#     for col in range(order):
-#         sumMatA[row].append(matA[row][col]+matB[row][col])
-#         subMatA[row].append(matA[row][col]-matB[row][col])
-#
-# print("\nSum of matrix A and B: \n")
-# for row in range(order):
-#     for col in range(order):
-#         print("{}\t".format(sumMatA[row][col]),end='')
-#     print("\n")
-#
-# print("\nSubtraction of matrix A and B: \n")
-# for row in range(order):
-#     for col in range(order):
-#         print("{}\t".format(subMatA[row][col]),end='')
-#     print("\n")
+def power_two(x):
+    for i in range(0,100):
+        if(x==2**i):
+            return True
+        elif(x<2**i):
+            return False
+power_two_num=filter(power_two,num)
+
+print(list(power_two_num))
+
+sum_num=reduce(lambda x,y:x+y,num)
+print(sum_num)
+def fact(n):
+    if(n==0):
+        return 1
+    else:
+        return n*fact(n-1)
+
+list2=map(lambda x,y:x**y/fact(y),num,list(range(0,10)))
+
+val=reduce(lambda x,y:x+y,list(list2))
+print(val)
